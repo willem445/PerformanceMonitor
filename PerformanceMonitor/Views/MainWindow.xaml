@@ -1,0 +1,55 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PerformanceMonitor"
+        xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+        xmlns:PerformanceMonitor="clr-namespace:PerformanceMonitor" x:Class="PerformanceMonitor.MainWindow"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="502" Width="828" Opacity="0.85" Background="#FF212020" Icon="/Resources/Sidebar.ico">
+
+    <Window.Resources>
+        <Storyboard x:Key="sbShowRightMenu" >
+            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,0,-230,0" To="0,0,0,0" DecelerationRatio=".9" Duration="0:0:01" />
+        </Storyboard>
+        <Storyboard x:Key="sbHideRightMenu">
+            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,0,0,0" To="0,0,-230,0" AccelerationRatio=".1" Duration="0:0:01" />
+        </Storyboard>
+    </Window.Resources>
+
+    <Grid>
+
+        <!--Settings Menu -200 -->
+        <Grid Panel.ZIndex="1000" Margin="0,0,-230,0" Height="470" Width="500" HorizontalAlignment="Right">
+            <local:SettingsView/>
+        </Grid>
+
+
+        <!--Menu Strip-->
+        <Grid>
+            <local:MenuStripView/>
+        </Grid>
+
+        <!--CPU Tab-->
+        <Grid Margin="11,30,0,0" Width="765" Height="277" VerticalAlignment="Top" HorizontalAlignment="Left">
+            <local:HardwareView x:Name="hardwareView"/>
+        </Grid>
+
+        <!--Weather Tab-->
+        <Grid Margin="11,310,0,0">
+            <local:WeatherView/>
+        </Grid>
+
+        <!--App Shortcut Tab-->
+        <Grid>
+            <local:ApplicationShortcutView Margin="255,310,0,0"/>
+        </Grid>
+
+
+        <GroupBox x:Name="externalGroupBox" Header="External Controls" HorizontalAlignment="Left" Margin="469,325,0,0" VerticalAlignment="Top" Height="133" Width="167" Foreground="White"/>
+
+        <GroupBox x:Name="fanSpeedGroupBox_Copy" Header="Computer Fan Speed" HorizontalAlignment="Left" Margin="641,325,0,0" VerticalAlignment="Top" Height="133" Width="167" Foreground="White"/>
+
+    </Grid>
+</Window>

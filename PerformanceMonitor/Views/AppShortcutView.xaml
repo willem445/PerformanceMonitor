@@ -1,0 +1,65 @@
+﻿<UserControl x:Class="PerformanceMonitor.ApplicationShortcutView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PerformanceMonitor"
+             mc:Ignorable="d" 
+             d:DesignHeight="133" d:DesignWidth="210">
+
+    
+    <Grid>
+        <GroupBox x:Name="appGroupBox" Header="Applications" HorizontalAlignment="Left" VerticalAlignment="Top" Height="133" Width="210" Foreground="White">
+            <StackPanel Orientation="Horizontal" Width="194">
+                <StackPanel.Resources>
+                    <Style TargetType="Label">
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="FontSize" Value="13.33"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="FontWeight" Value="Bold"/>
+                                <Setter Property="Foreground" Value="White"/>
+                                <Setter Property="Cursor" Value="Hand"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </StackPanel.Resources>
+                <StackPanel Orientation="Vertical" Width="97">
+                    <Label x:Name="appButton1Label" Content="{Binding AppShortcutModel.AppName1, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Margin="0,8,0,3"  >
+                        <Label.InputBindings>
+                            <MouseBinding Command="{Binding OpenApp1Command}" MouseAction="LeftClick"/>
+                        </Label.InputBindings>
+
+                    </Label>
+                    <Label x:Name="appButton3Label" Content="{Binding AppShortcutModel.AppName3, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Margin="0,3,0,3" >
+                        <Label.InputBindings>
+                            <MouseBinding Command="{Binding OpenApp3Command}" MouseAction="LeftClick"/>
+                        </Label.InputBindings>
+                    </Label>
+                    <Label x:Name="appButton5Label" Content="{Binding AppShortcutModel.AppName5, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Margin="0,3,0,3" >
+                        <Label.InputBindings>
+                            <MouseBinding Command="{Binding OpenApp5Command}" MouseAction="LeftClick"/>
+                        </Label.InputBindings>
+                    </Label>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Width="97">
+                    <Label x:Name="appButton2Label" Content="{Binding AppShortcutModel.AppName2, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Margin="0,8,0,3" >
+                        <Label.InputBindings>
+                            <MouseBinding Command="{Binding OpenApp2Command}" MouseAction="LeftClick"/>
+                        </Label.InputBindings>
+                    </Label>
+                    <Label x:Name="appButton4Label" Content="{Binding AppShortcutModel.AppName4, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Margin="0,3,0,3" >
+                        <Label.InputBindings>
+                            <MouseBinding Command="{Binding OpenApp4Command}" MouseAction="LeftClick"/>
+                        </Label.InputBindings>
+                    </Label>
+                    <Label x:Name="appButton6Label" Content="{Binding AppShortcutModel.AppName6, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Margin="0,3,0,3" >
+                        <Label.InputBindings>
+                            <MouseBinding Command="{Binding OpenApp6Command}" MouseAction="LeftClick"/>
+                        </Label.InputBindings>
+                    </Label>
+                </StackPanel>
+            </StackPanel>
+        </GroupBox>
+    </Grid>
+</UserControl>

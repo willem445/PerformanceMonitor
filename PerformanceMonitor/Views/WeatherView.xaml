@@ -1,0 +1,33 @@
+﻿<UserControl x:Class="PerformanceMonitor.WeatherView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PerformanceMonitor"
+             mc:Ignorable="d" 
+             d:DesignHeight="133" d:DesignWidth="239">
+    <Grid>
+        <GroupBox x:Name="weatherGroupBox" Header="Weather" HorizontalAlignment="Left" VerticalAlignment="Top" Height="133" Width="239" Foreground="White">
+            <Grid>
+                <Label x:Name="tempLabel" Content="Temp:" HorizontalAlignment="Left" Margin="4,-1,0,0" VerticalAlignment="Top" Foreground="White" FontWeight="Bold"/>
+                <Label x:Name="tempValueLabel" Content="{Binding WeatherModel.Temperature}" HorizontalAlignment="Left" Margin="66,-1,0,0" VerticalAlignment="Top" Foreground="White"/>
+                <Label x:Name="tempLabel_Copy" Content="Pressure:" HorizontalAlignment="Left" Margin="4,25,0,0" VerticalAlignment="Top" Foreground="White" FontWeight="Bold"/>
+                <Label x:Name="tempLabel_Copy1" Content="Dewpoint:" HorizontalAlignment="Left" Margin="4,51,0,0" VerticalAlignment="Top" Foreground="White" FontWeight="Bold"/>
+                <Label x:Name="tempLabel_Copy2" Content="Wind:" HorizontalAlignment="Left" Margin="4,77,0,0" VerticalAlignment="Top" Foreground="White" FontWeight="Bold"/>
+                <Label x:Name="pressureValueLabel" Content="{Binding WeatherModel.Pressure}" HorizontalAlignment="Left" Margin="65,25,0,0" VerticalAlignment="Top" Foreground="White"/>
+                <Label x:Name="dewpointValueLabel" Content="{Binding WeatherModel.Dewpoint}" HorizontalAlignment="Left" Margin="66,51,0,0" VerticalAlignment="Top" Foreground="White"/>
+                <Label x:Name="windspeedValueLabel" Content="{Binding WeatherModel.WindSpeed}" HorizontalAlignment="Left" Margin="66,76,0,0" VerticalAlignment="Top" Foreground="White"/>
+                <Label x:Name="tempLabel_Copy3" Content="Realfeel:" HorizontalAlignment="Left" Margin="119,-1,0,0" VerticalAlignment="Top" Foreground="White" FontWeight="Bold"/>
+                <Label x:Name="tempLabel_Copy4" Content="Humidity:" HorizontalAlignment="Left" Margin="119,25,0,0" VerticalAlignment="Top" Foreground="White" FontWeight="Bold"/>
+                <Label x:Name="tempLabel_Copy5" Content="Visibility:" HorizontalAlignment="Left" Margin="119,51,0,0" VerticalAlignment="Top" Foreground="White" FontWeight="Bold"/>
+                <Label x:Name="tempLabel_Copy6" Content="Precip:" HorizontalAlignment="Left" Margin="119,76,0,0" VerticalAlignment="Top" Foreground="White" FontWeight="Bold"/>
+                <Label x:Name="realFeelValueLabel" Content="{Binding WeatherModel.HeatIndex}" HorizontalAlignment="Left" Margin="180,-1,0,0" VerticalAlignment="Top" Foreground="White"/>
+                <Label x:Name="humidityValueLabel" Content="{Binding WeatherModel.Humidity}" HorizontalAlignment="Left" Margin="180,25,0,0" VerticalAlignment="Top" Foreground="White"/>
+                <Label x:Name="visibilityValueLabel" Content="{Binding WeatherModel.Visibility}" HorizontalAlignment="Left" Margin="178,51,0,0" VerticalAlignment="Top" Foreground="White"/>
+                <Label x:Name="precipValueLabel" Content="{Binding WeatherModel.Precipitation}" HorizontalAlignment="Left" Margin="181,76,0,0" VerticalAlignment="Top" Foreground="White"/>
+                <Label x:Name="lastUpdatedLabel" Content="{Binding WeatherModel.ObsTime}" HorizontalAlignment="Left" Margin="0,97,0,-10" VerticalAlignment="Top" Height="28" Foreground="White" FontSize="8"/>
+
+            </Grid>
+        </GroupBox>
+    </Grid>
+</UserControl>

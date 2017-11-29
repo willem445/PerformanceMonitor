@@ -1,0 +1,16 @@
+﻿<UserControl x:Class="PerformanceMonitor.NumericUpDown"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PerformanceMonitor"
+             mc:Ignorable="d" 
+             d:DesignHeight="22" d:DesignWidth="100">
+    <StackPanel Orientation="Horizontal">
+        <TextBox x:Name="updwnTextBox" Width="80" TextChanged="updwnTextBox_TextChanged" PreviewTextInput="updwnTextBox_PreviewTextInput" PreviewKeyDown="updwnTextBox_PreviewKeyDown" />
+        <StackPanel Orientation="Vertical">
+            <RepeatButton x:Name="Increase" Click="Increase_Click" FontSize="7" FontFamily="Marlett" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Width="20" Height="11" >5</RepeatButton>
+            <RepeatButton x:Name="Decrease" Click="Decrease_Click" FontSize="7" FontFamily="Marlett" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Width="20" Height="11" >6</RepeatButton>
+        </StackPanel>
+    </StackPanel>
+</UserControl>

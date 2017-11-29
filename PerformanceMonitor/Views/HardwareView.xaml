@@ -1,0 +1,145 @@
+﻿<UserControl x:Class="PerformanceMonitor.HardwareView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PerformanceMonitor"
+             xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+             mc:Ignorable="d" 
+             d:DesignHeight="277" d:DesignWidth="765">
+    <StackPanel Orientation="Horizontal">
+        <StackPanel Orientation="Vertical">
+            <!--CPU Performance-->
+            <GroupBox Header="{Binding HardwareModel.CPUName}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="152" Width="208" Foreground="White">
+                <StackPanel Orientation="Vertical">
+                    <!--Headers-->
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Right">
+                        <Label Content="Min" Foreground="White" FontWeight="Bold"/>
+                        <Label Content="Max" Foreground="White" Margin="1,0,0,0" FontWeight="Bold"/>
+                        <Label Content="Load" Foreground="White" Margin="1,0,0,0" FontWeight="Bold"/>
+                    </StackPanel>
+
+                    <!--Core #1-->
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                        <Label Content="Core #1:" Foreground="White" Margin="0,0,2,0" FontWeight="Bold"/>
+                        <Label Content="{Binding HardwareModel.CPUCore0}" Width="34" Foreground="White"/>
+                        <Label Content="{Binding HardwareModel.CPUCore0Min}" Width="34" Foreground="White"/>
+                        <Label Content="{Binding HardwareModel.CPUCore0Max}" Width="34" Foreground="White"/>
+                        <Label Content="{Binding HardwareModel.CPUCore0Load}" Width="34" Foreground="White"/>
+                    </StackPanel>
+
+                    <!--Core #2-->
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                        <Label Content="Core #2:" Foreground="White" Margin="0,0,2,0" FontWeight="Bold"/>
+                        <Label Content="{Binding HardwareModel.CPUCore1}" Width="34" Foreground="White"/>
+                        <Label Content="{Binding HardwareModel.CPUCore1Min}" Width="34" Foreground="White"/>
+                        <Label Content="{Binding HardwareModel.CPUCore1Max}" Width="34" Foreground="White"/>
+                        <Label Content="{Binding HardwareModel.CPUCore1Load}" Width="34" Foreground="White"/>
+                    </StackPanel>
+
+                    <!--Core #3-->
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                        <Label Content="Core #3:" Foreground="White" Margin="0,0,2,0" FontWeight="Bold"/>
+                        <Label Content="{Binding HardwareModel.CPUCore2}" Width="34" Foreground="White"/>
+                        <Label Content="{Binding HardwareModel.CPUCore2Min}" Width="34" Foreground="White"/>
+                        <Label Content="{Binding HardwareModel.CPUCore2Max}" Width="34" Foreground="White"/>
+                        <Label Content="{Binding HardwareModel.CPUCore2Load}" Width="34" Foreground="White"/>
+                    </StackPanel>
+
+                    <!--Core #4-->
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                        <Label Content="Core #4:" Foreground="White" Margin="0,0,2,0" FontWeight="Bold"/>
+                        <Label Content="{Binding HardwareModel.CPUCore3}" Width="34" Foreground="White"/>
+                        <Label Content="{Binding HardwareModel.CPUCore3Min}" Width="34" Foreground="White"/>
+                        <Label Content="{Binding HardwareModel.CPUCore3Max}" Width="34" Foreground="White"/>
+                        <Label Content="{Binding HardwareModel.CPUCore3Load}" Width="34" Foreground="White"/>
+                    </StackPanel>
+                </StackPanel>
+            </GroupBox>
+
+            <!--GPU Performance-->
+            <GroupBox Height="125" Width="208" Header="{Binding HardwareModel.GPUName}" Foreground="White">
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Right">
+                        <Label Content="Min" Foreground="White" FontWeight="Bold"/>
+                        <Label Content="Max" Foreground="White" FontWeight="Bold"/>
+                    </StackPanel>
+                    
+                    <!--GPU Temp-->
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left">
+                        <Label Content="GPU Temp:" FontWeight="Bold" Foreground="White"/>
+                        <Label Content="{Binding HardwareModel.GPUTemp}"  Width="34" Foreground="White"/>
+                        <Label Content="{Binding HardwareModel.GPUTempMin}"  Width="34" Foreground="White"/>
+                        <Label Content="{Binding HardwareModel.GPUTempMax}"  Width="34" Foreground="White"/>
+
+
+                    </StackPanel>
+                    
+                    <!--GPU Load-->
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left">
+                        <Label Content="GPU Load:" Foreground="White" FontWeight="Bold"/>
+                        <Label Content="{Binding HardwareModel.GPULoad}"  Width="34" Foreground="White"/>
+                    </StackPanel>
+                    
+                    <!--GPU Memory-->
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left">
+                        <Label Content="Mem Load:" FontWeight="Bold" Foreground="White"/>
+                        <Label Content="{Binding HardwareModel.GPUMem}"  Width="34" Foreground="White"/>
+                    </StackPanel>
+                </StackPanel>
+            </GroupBox>
+        </StackPanel>
+
+        <!--Performance Graphs-->
+        <GroupBox Height="277" Width="550" Header="Performance Graphs" Foreground="White" Margin="5,0,0,0">
+            <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left">
+                <StackPanel Orientation="Horizontal" Margin="10,2,10,10">
+                    
+                    <!--CPU Temp Graph-->
+                    <Grid>
+                        <Label Content="CPU Temp (°C)" Margin="55,0,0,0" Foreground="White"/>
+                        <lvc:Gauge x:Name="cpuTempChart" Grid.Column="0"
+					    From="20" To="100" Value="{Binding HardwareModel.CPUPkgTemp}" FromColor="Green" ToColor="Red" Height="110" Width="130" Margin="35,0,30,0"/>
+                    </Grid>
+
+                    <Grid>
+                        <Label Content="CPU Load (%)" Margin="25,0,0,0" Foreground="White"/>
+                        <lvc:Gauge x:Name="cpuLoadChart" Grid.Column="0" 
+					    From="0" To="100" Value="{Binding HardwareModel.CPUPkgLoad}" FromColor="Green" ToColor="Red" Height="110" Width="130" Margin="0,0,30,0"/>
+                    </Grid>
+
+                    <Grid>
+                        <Label Content="GPU Mem (%)" Margin="25,0,0,0" Foreground="White"/>
+                        <lvc:Gauge x:Name="gpuMemChart" Grid.Column="0"
+					    From="0" To="100" Value="{Binding HardwareModel.GPUPkgMem}" FromColor="Green" ToColor="Red" Width="130"/>
+                    </Grid>
+
+
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="10">
+                    <Grid>
+                        <Label Content="GPU Temp (°C)" Margin="55,0,0,0" Foreground="White"/>
+                        <lvc:Gauge x:Name="gpuTempChart" Grid.Column="0" 
+					    From="20" To="100" Value="{Binding HardwareModel.GPUPkgTemp}" FromColor="Green" ToColor="Red" Height="110" Width="130" Margin="35,0,30,0"/>
+                    </Grid>
+
+                    <Grid>
+                        <Label Content="GPU Load (%)" Margin="25,0,0,0" Foreground="White"/>
+                        <lvc:Gauge x:Name="gpuLoadChart" Grid.Column="0" 
+					    From="0" To="100" Value="{Binding HardwareModel.GPUPkgLoad}" FromColor="Green" ToColor="Red" Height="110" Width="130" Margin="0,0,30,0"/>
+                    </Grid>
+
+                    <Grid>
+                        <Label Content="GPU Fan (%)" Margin="25,0,0,0" Foreground="White"/>
+                        <lvc:Gauge x:Name="gpuFanChart" Grid.Column="0" 
+					     From="0" To="100" Value="{Binding HardwareModel.GPUPkgFan}" FromColor="Green" ToColor="Red" Height="110" Width="130"/>
+                    </Grid>
+
+                </StackPanel>
+            </StackPanel>
+
+        </GroupBox>
+    </StackPanel>
+
+
+</UserControl>
