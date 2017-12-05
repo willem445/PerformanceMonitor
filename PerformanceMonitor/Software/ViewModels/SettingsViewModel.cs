@@ -179,6 +179,16 @@ namespace PerformanceMonitor
             }
         }
 
+        internal void AddAutoStartButton()
+        {
+            Console.WriteLine("Test");
+        }
+
+        internal void RemoveAutoStartButton()
+        {
+            Console.WriteLine("Test");
+        }
+
         //ICommand******************************************************************************
         public ICommand ApplyCommand
         {
@@ -217,6 +227,22 @@ namespace PerformanceMonitor
             get
             {
                 return new RelayCommand(SetButton);
+            }
+        }
+
+        public ICommand AddAutoStartCommand
+        {
+            get
+            {
+                return new RelayCommand(AddAutoStartButton);
+            }
+        }
+
+        public ICommand RemoveAutoStartCommand
+        {
+            get
+            {
+                return new RelayCommand(RemoveAutoStartButton);
             }
         }
 
