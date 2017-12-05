@@ -115,8 +115,8 @@
                                 <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
                                     <Label Content="App list:" Foreground="White"/>
                                     <ComboBox x:Name="autoStartComboBox" Width="70"/>
-                                    <Button x:Name="addAutostartButton" Content="Add" Margin="4 0 4 0" Command="{Binding AddAutoStartCommand}"/>
-                                    <Button x:Name="removeAutostartButton" Content="Remove" Command="{Binding RemoveAutoStartCommand}"/>
+                                    <Button x:Name="addAutostartButton" Content="Add" Margin="4 0 4 0" />
+                                    <Button x:Name="removeAutostartButton" Content="Remove" />
                                 </StackPanel>
                                 <Separator/>
 
