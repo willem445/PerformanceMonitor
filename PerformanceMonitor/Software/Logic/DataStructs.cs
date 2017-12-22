@@ -11,10 +11,11 @@ namespace PerformanceMonitor
         private int _tempPoll;
         private int _weatherPoll;
         private ObservableCollection<AppButton> _apps;
+        private ObservableCollection<AppButton> _autostartApps;
         private bool _startWindowsEnabled;
         private bool _dataLoggingEnabled;
 
-        public SettingsStruct(string apiKey, string state, string town, int tempPoll, int weatherPoll, ObservableCollection<AppButton> appCollection, bool startWindowsEnabled, bool dataLoggingEnabled)
+        public SettingsStruct(string apiKey, string state, string town, int tempPoll, int weatherPoll, ObservableCollection<AppButton> appCollection, ObservableCollection<AppButton> autoStartApps, bool startWindowsEnabled, bool dataLoggingEnabled)
         {
             this._apiKey = apiKey;
             this._state = state;
@@ -22,6 +23,7 @@ namespace PerformanceMonitor
             this._tempPoll = tempPoll;
             this._weatherPoll = weatherPoll;
             this._apps = appCollection;
+            this._autostartApps = autoStartApps;
             this._startWindowsEnabled = startWindowsEnabled;
             this._dataLoggingEnabled = dataLoggingEnabled;
         }
@@ -32,6 +34,7 @@ namespace PerformanceMonitor
         public int TempPoll { get { return this._tempPoll; } }
         public int WeatherPoll { get { return this._weatherPoll; } }
         public ObservableCollection<AppButton> AppButton { get { return this._apps; } }
+        public ObservableCollection<AppButton> AutoStartApps { get { return this._autostartApps; } }
         public bool StartWindowsEnabled { get { return this._startWindowsEnabled; } }
         public bool DataLoggingEnabled { get { return this._dataLoggingEnabled; } }
     }

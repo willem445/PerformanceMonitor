@@ -21,6 +21,7 @@ namespace PerformanceMonitor
         private string selectedState;
 
         private string selectedButton;
+        private string selectedAutoStartApp;
 
         //Temporary fields
         private string townTemp;
@@ -62,6 +63,7 @@ namespace PerformanceMonitor
                 OnPropertyChanged(nameof(SelectedState));
             }
         }
+
         public string SelectedButton
         {
             get
@@ -72,6 +74,20 @@ namespace PerformanceMonitor
             {
                 selectedButton = value;
                 OnPropertyChanged(nameof(SelectedButton));
+            }
+        }
+
+        //Bound to comboBox, represents the currently selected item in the list
+        public string SelectedAutoStartApp
+        {
+            get
+            {
+                return selectedAutoStartApp;
+            }
+            set
+            {
+                selectedAutoStartApp = value;
+                OnPropertyChanged(nameof(SelectedAutoStartApp));
             }
         }
 
@@ -97,6 +113,7 @@ namespace PerformanceMonitor
                 SettingsModel.TempPoll,
                 SettingsModel.WeatherPoll,
                 SettingsModel.AppButtons,
+                SettingsModel.AutoStartApps,
                 SettingsModel.StartWindowsEnabled,
                 SettingsModel.DataLoggingEnabled);
 
@@ -181,12 +198,26 @@ namespace PerformanceMonitor
 
         internal void AddAutoStartButton()
         {
-            Console.WriteLine("Test");
+            OpenFileDialog openApp = new OpenFileDialog();
+            Nullable<bool> result = openApp.ShowDialog();
+
+            if (result == true)
+            {
+                string appPath = openApp.InitialDirectory + openApp.FileName;
+                string appName = openApp.SafeFileName;
+
+                AppButton autoStartApp = new AppButton(appPath, appName);
+
+                SettingsModel.AutoStartApps.Add(autoStartApp);
+            }
+
+
+            Console.WriteLine("Add clicked.");
         }
 
         internal void RemoveAutoStartButton()
         {
-            Console.WriteLine("Test");
+            Console.WriteLine("Remove clicked");
         }
 
         //ICommand******************************************************************************

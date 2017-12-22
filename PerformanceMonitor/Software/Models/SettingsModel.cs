@@ -17,6 +17,7 @@ namespace PerformanceMonitor
         private int tPoll;
         private int wPoll;
         private ObservableCollection<AppButton> appButtons;
+        private ObservableCollection<AppButton> autoStartApps;
         private bool startWindowsEnabled;
         private bool dataLoggingEnabled;
 
@@ -93,6 +94,20 @@ namespace PerformanceMonitor
                 OnPropertyChanged(nameof(AppButtons));
             }
         }
+
+        public ObservableCollection<AppButton> AutoStartApps
+        {
+            get
+            {
+                return autoStartApps;
+            }
+            set
+            {
+                autoStartApps = value;
+                OnPropertyChanged(nameof(AutoStartApps));
+            }
+        }
+
         public bool StartWindowsEnabled
         {
             get
@@ -134,6 +149,7 @@ namespace PerformanceMonitor
             TempPoll = _SettingsStruct.TempPoll;
             WeatherPoll = _SettingsStruct.WeatherPoll;
             AppButtons = _SettingsStruct.AppButton;
+            AutoStartApps = _SettingsStruct.AutoStartApps;
             StartWindowsEnabled = _SettingsStruct.StartWindowsEnabled;
             DataLoggingEnabled = _SettingsStruct.DataLoggingEnabled;
         }

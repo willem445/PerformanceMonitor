@@ -114,7 +114,7 @@
                                 <Label Content="Autostart Application Settings" Foreground="White" FontWeight="Bold"/>
                                 <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
                                     <Label Content="App list:" Foreground="White"/>
-                                    <ComboBox x:Name="autoStartComboBox" Width="70"/>
+                                    <ComboBox x:Name="autoStartComboBox" Width="70" ItemsSource="{Binding SettingsModel.AutoStartApps, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="AppName" SelectedValue="{Binding Path=SelectedAutoStartApp, UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="AppName"/>
                                     <Button x:Name="addAutostartButton" Content="Add" Margin="4 0 4 0" Command="{Binding AddAutoStartCommand}"/>
                                     <Button x:Name="removeAutostartButton" Content="Remove" Command="{Binding RemoveAutoStartCommand}"/>
                                 </StackPanel>

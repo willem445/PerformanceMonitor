@@ -107,16 +107,22 @@ namespace PerformanceMonitor
             }
         }
 
+        //TODO HP - This code does not belong in Notify Subscribers - move to own function ConvertSettingsToStruct()
         private void NotifySubscibers(Dictionary<string, string> settingsDict)
         {
             ObservableCollection<AppButton> apps = new ObservableCollection<AppButton>();
+            ObservableCollection<AppButton> autoStartApps = new ObservableCollection<AppButton>();
 
+            //Application Shortcut Buttons
             apps.Add(new AppButton(settingsDict["appBut1"], settingsDict["appName1"]));
             apps.Add(new AppButton(settingsDict["appBut2"], settingsDict["appName2"]));
             apps.Add(new AppButton(settingsDict["appBut3"], settingsDict["appName3"]));
             apps.Add(new AppButton(settingsDict["appBut4"], settingsDict["appName4"]));
             apps.Add(new AppButton(settingsDict["appBut5"], settingsDict["appName5"]));
             apps.Add(new AppButton(settingsDict["appBut6"], settingsDict["appName6"]));
+
+            //Autostart Applications
+            //autoStartApps.Add(new AppButton("test", "test"));
 
             bool startWindows;
             bool dataLogging;
@@ -132,7 +138,7 @@ namespace PerformanceMonitor
                 dataLogging = false;
 
             SettingsStruct settings = new SettingsStruct(settingsDict["apiKey"], settingsDict["state"], settingsDict["town"], Convert.ToInt32(settingsDict["tPoll"]), Convert.ToInt32(settingsDict["wPoll"]), 
-                apps, startWindows, dataLogging);
+                apps, autoStartApps, startWindows, dataLogging);
 
             foreach(var observer in observers)
             {
